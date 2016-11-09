@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Liste de contacts</title>
+
+    <!-- Bootstrap -->
+    <link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="libs/css/style.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+     <nav class="navbar navbar-inverse ">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Liste de contacts</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Recherche...">
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+
+        <div class="col-sm-2 col-md-2 sidebar">
+          <label>Nouveau contact</label>
+          <div class="form-group">
+              <input type="text" data-bind="value: funame" class="form-control" placeholder="Nom et prénoms" aria-describedby="basic-addon1">
+            </div>
+
+            <div class="form-group">
+              <input type="text" data-bind="value: fphone" class="form-control" placeholder="Téléphone" aria-describedby="basic-addon2">
+            </div>
+
+            <div class="form-group">
+              <input type="email" data-bind="value: femail" class="form-control" placeholder="Email" >
+            </div>
+
+            <button type="button" data-bind="click: addContact" class="btn btn-default navbar-btn">Valider</button>
+            <button type="button" class="btn btn-default navbar-btn">Rafraichir</button>
+
+
+        </div>
+
+        <!--   MAIN    -->
+
+        <div class="col-sm-10 col-md-10 main">
+          <h1 class="sub-header">Contacts</h1>
+          <div class="table table-responsive table-bordered">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Nom et prénoms</th>
+                  <th>Téléphone</th>
+                  <th>Email</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody data-bind="foreach: contacts">
+               
+                <tr>
+                  <td data-bind="text: orderNum"></td>
+                  <td data-bind="text: uname"></td>
+                  <td data-bind="text: phone"></td>
+                  <td data-bind="text: email"></td>
+                  <td>
+                      <a href="#" data-bind="click: $root.removeContact">Supprimer</a>
+                      <!-- <a href="#" data-bind="click: $root.removeSeat">Remove</a> -->
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="libs/js/jquery-3.1.1.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="libs/bootstrap/js/bootstrap.min.js"></script>
+    <!--Knockout js -->
+    <script src="libs/js/knockout-3.4.1.js"></script>
+    <!-- knockstrap -->
+    <!--<script src="libs/js/knockstrap.js"></script>-->
+    <!-- logic.js -->
+    <script src="libs/js/logicVM.js"></script>
+  </body>
+</html>
