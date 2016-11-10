@@ -10,6 +10,8 @@
     <!-- Bootstrap -->
     <link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="libs/css/style.css" rel="stylesheet">
+    <link href="libs/css/formValidation.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.min.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -32,42 +34,39 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           
-          <form class="navbar-form navbar-right">
-            <input type="text" class="form-control" placeholder="Recherche...">
-          </form>
         </div>
       </div>
     </nav>
 
     <div class="container-fluid">
       <div class="row">
-
-        <div class="col-sm-2 col-md-2 sidebar">
-          <label>Nouveau contact</label>
-          <div class="form-group">
-              <input type="text" data-bind="value: funame" class="form-control" placeholder="Nom et prénoms" aria-describedby="basic-addon1">
-            </div>
-
+        <form id="contactForm" >
+          <div class="col-sm-2 col-md-2 sidebar">
+            <label>Nouveau contact</label>
             <div class="form-group">
-              <input type="text" data-bind="value: fphone" class="form-control" placeholder="Téléphone" aria-describedby="basic-addon2">
-            </div>
+                <input type="text" data-bind="value: funame" name="funame" class="form-control" placeholder="Nom et prénoms" >
+              </div>
 
-            <div class="form-group">
-              <input type="email" data-bind="value: femail" class="form-control" placeholder="Email" >
-            </div>
+              <div class="form-group">
+                <input type="text" data-bind="value: fphone" name="fphone" class="form-control" placeholder="Téléphone" >
+              </div>
 
-            <button type="button" data-bind="click: addContact" class="btn btn-default navbar-btn">Valider</button>
-            <button type="button" class="btn btn-default navbar-btn">Rafraichir</button>
+              <div class="form-group">
+                <input type="email" data-bind="value: femail" name="femail" class="form-control" placeholder="Email" >
+              </div>
+
+              <button type="submit" data-bind="click: addContact" class="btn btn-default navbar-btn">Valider</button>
+              <button type="button" data-bind="click: refreshContact"class="btn btn-default navbar-btn">Rafraichir</button>
 
 
-        </div>
-
+          </div>
+        </form>
         <!--   MAIN    -->
 
         <div class="col-sm-10 col-md-10 main">
           <h1 class="sub-header">Contacts</h1>
-          <div class="table table-responsive table-bordered">
-            <table class="table table-striped">
+          <div >
+            <table class="table table-striped" id="infos_tables" data-toggle="table" data-cache="false"  data-pagination="false" data-search="true">
               <thead>
                 <tr>
                   <th>#</th>
@@ -106,7 +105,13 @@
     <script src="libs/js/knockout-3.4.1.js"></script>
     <!-- knockstrap -->
     <!--<script src="libs/js/knockstrap.js"></script>-->
+    <!-- form validation -->
+    <script src="libs/js/formValidation.js"></script>
+    <script src="libs/js/bootstrapvalidator.js"></script>
     <!-- logic.js -->
-    <script src="libs/js/logicVM.js"></script>
+    <script src="js/logicVM.js"></script>
+    <script src="js/contactValidation.js"></script> 
+    <script src="libs/js/bootstrap-table.js"></script>
+
   </body>
 </html>
